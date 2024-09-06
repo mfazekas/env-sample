@@ -1,0 +1,17 @@
+{
+  "cli": {
+    "version": ">= 12.0.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "simulator": {
+      "env": {
+        "EXPO_PUBLIC_GRASS": "green#",
+        "GRASS": "green#"
+      },
+      "ios": {
+        "simulator": true,
+      }
+    }
+  }
+}
