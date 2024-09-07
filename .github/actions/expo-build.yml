@@ -1,0 +1,22 @@
+name: Expo build
+on:
+  push:
+    branches:
+      - main
+env:
+  EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+jobs:
+  expo-build:
+    runs-on: ubuntu-latest
+  steps:
+    - name: 🏗 Setup EAS
+      uses: expo/expo-github-action@main
+      with:
+        eas-version: 9.1.0
+        token: ${{ secrets.EXPO_TOKEN }}
+    - name: Continuously Deploy
+      uses: expo/expo-github-action/continuous-deploy-fingerprint@main
+      env:
+        EXPO_PUBLIC_SKY_COLOR: "**blue**"
+        SKY_COLOR: "**blue**"
