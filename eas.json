@@ -6,8 +6,8 @@
   "build": {
     "simulator": {
       "env": {
-        "EXPO_PUBLIC_GRASS": "green#",
-        "GRASS": "green#"
+        "EXPO_PUBLIC_GRASS_COLOR": "green#",
+        "GRASS_COLOR": "green#"
       },
       "ios": {
         "simulator": true,
