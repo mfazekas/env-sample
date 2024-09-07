@@ -15,6 +15,10 @@ jobs:
         with:
           eas-version: 9.1.0
           token: ${{ secrets.EXPO_TOKEN }}
+      - name: 📦 Install dependencies
+        run: npm install
+      - name: Get project info
+        run: npx expo config --json --type public
       - name: Continuously Deploy
         uses: expo/expo-github-action/continuous-deploy-fingerprint@main
         with:
