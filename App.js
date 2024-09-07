@@ -21,7 +21,7 @@ function getEGrassColor() {
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Version: 2</Text>
+      <Text>Version: 3</Text>
 
       <Text style={{}}>The sky is {getSkyColor()}</Text>
       <Text style={{}}>The grass is {getGrassColor()}</Text>
