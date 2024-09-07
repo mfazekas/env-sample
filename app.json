@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "env-sample",
-    "slug": "env-sample",
+    "name": "env-test",
+    "slug": "env-test",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,7 +14,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.mikloszabit.envsample"
+      "bundleIdentifier": "com.envtest.envtest"
     },
     "android": {
       "adaptiveIcon": {
