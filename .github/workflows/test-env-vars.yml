@@ -11,3 +11,13 @@ jobs:
       - name: Hello world
         run: |
           echo "Hello world"
+
+      - name: Set environment variable
+        run: echo "MY_ENV_VAR=myValue" >> $GITHUB_ENV
+
+      - name: Show environment variable
+        run: echo $MY_ENV_VAR
+
+      - name: Show all environment variables
+        run: env
+      
