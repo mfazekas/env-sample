@@ -8,12 +8,18 @@ jobs:
   expo-build:
     runs-on: ubuntu-latest
     steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v3
       - name: Hello world
         run: |
           echo "Hello world"
 
       - name: Set environment variable
         run: echo "MY_ENV_VAR=myValue" >> $GITHUB_ENV
+
+      - name: Use eas.json environment variables
+        run: |
+          npx ts-node ./scripts/extract_eas_env_vars.ts simulator
 
       - name: Show environment variable
         run: echo $MY_ENV_VAR
