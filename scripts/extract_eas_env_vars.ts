@@ -13,7 +13,6 @@ if (process.argv.length < 4) {
   process.exit(1);
 }
 
-
 const profile = process.argv[2];
 const envfile = process.argv[3];
 const easJsonPath = path.join(process.cwd(), 'eas.json');
@@ -28,4 +27,4 @@ for (const key in env) {
   fs.appendFileSync(envfile, `${key}=${env[key]}\n`);
 }
 
-console.log(`Variables ${variables.join(', ')} extracted from eas.json for profile ${profile} into ${envfile}`);
+console.log(`Variables ${variables.join(', ')} were extracted from "eas.json" for profile "${profile}"`);
