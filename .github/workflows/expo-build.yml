@@ -23,7 +23,8 @@ jobs:
         run: npx expo config --json --type public
       - name: Setup env vars
         run: |
-          npx ts-node ./scripts/extract_eas_env_vars.ts simulator $GITHUB_ENV
+          echo npx ts-node ./scripts/extract_eas_env_vars.ts simulator $GITHUB_ENV
+          jq -r '.build.simulator.env | to_entries | map("\(.key)=\"\(.value)\"" ) | .[]' ./eas.json
           jq -r '.build.simulator.env | to_entries | map("\(.key)=\"\(.value)\"" ) | .[]' ./eas.json >> $GITHUB_ENV
       - name: Show environment variable
         run: |
