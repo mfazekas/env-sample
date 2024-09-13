@@ -35,6 +35,6 @@ jobs:
         run: env
 
       - name: Do somethig
-        uses: ./.github/workflows/sub-workflow.yml
+        uses: ./.github/workflows/local-action
         env:
           ANOTHER_ENV: "green"
