@@ -34,6 +34,7 @@ jobs:
       - name: Show all environment variables
         run: env
 
-      - uses: ./.github/workflows/sub-workflow.yml
+      - name: Do somethig
+        uses: ./.github/workflows/sub-workflow.yml
         env:
           ANOTHER_ENV: "green"
