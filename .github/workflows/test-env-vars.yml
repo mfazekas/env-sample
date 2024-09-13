@@ -20,7 +20,7 @@ jobs:
       - name: Use eas.json environment variables
         run: |
           echo npx ts-node ./scripts/extract_eas_env_vars.ts simulator $GITHUB_ENV
-          jq -r '.build.simulator.env | to_entries | map("\(.key)=\"\(.value)\"" ) | .[]' ./eas.json
+          jq -r '.build.simulator.env | to_entries | map("\(.key)=\"\(.value)\"" ) | .[]' ./eas.json >> $GITHUB_ENV
 
       - name: Show environment variable
         run: echo $MY_ENV_VAR
