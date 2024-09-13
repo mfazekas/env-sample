@@ -1,0 +1,21 @@
+name: Do something
+
+on:
+  workflow_call
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v3
+      - name: Do something
+        run: echo "Hello world"
+      - name: Show environment variable
+        run: |
+          echo $MY_ENV_VAR
+          echo "$EXPO_PUBLIC_GRASS_COLOR"
+          echo $ANOTHER_ENV
+      - name: Show all environment variables
+        run: env
+

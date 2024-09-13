@@ -5,7 +5,7 @@ on:
       - envtest
 
 env:
-  _PROFILE_TO_BUILD: simulator
+  PROFILE_TO_BUILD: simulator
 
 jobs:
   expo-build:
@@ -24,10 +24,16 @@ jobs:
       - name: Use eas.json environment variables2
         run: |
           echo npx ts-node ./scripts/extract_eas_env_vars.ts simulator $GITHUB_ENV
-          jq -r '.build.${{ env._PROFILE_TO_BUILD }}.env | to_entries | map("\(.key)=\"\(.value)\"" ) | .[]' ./eas.json | tee -a $GITHUB_ENV
+          jq -r '.build.${{ env.PROFILE_TO_BUILD }}.env | to_entries | map("\(.key)=\"\(.value)\"" ) | .[]' ./eas.json | tee -a $GITHUB_ENV
+
+      - uses: ./.github/workflows/sub-workflow.yml
+        env:
+          ANOTHER_ENV: "green"
 
       - name: Show environment variable
-        run: echo $MY_ENV_VAR
+        run: |
+          echo $MY_ENV_VAR
+          echo "$EXPO_PUBLIC_GRASS_COLOR"
 
       - name: Show all environment variables
         run: env
