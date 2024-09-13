@@ -13,9 +13,11 @@ if (process.argv.length < 4) {
   process.exit(1);
 }
 
+
 const profile = process.argv[2];
 const envfile = process.argv[3];
 const easJsonPath = path.join(process.cwd(), 'eas.json');
+
 console.log("easJsonPath", easJsonPath);
 const easJson = JSON.parse(fs.readFileSync(easJsonPath, 'utf8'));
 
