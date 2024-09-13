@@ -1,0 +1,9 @@
+name: "Some action"
+description: 'Greet someone'
+runs:
+  using: "composite"
+  steps:
+    - name: Hello world
+      run: echo "Hello world from local-cation"
+    - name: Show all environment variables
+      run: env
