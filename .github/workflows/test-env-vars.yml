@@ -1,4 +1,4 @@
-name: Expo build
+name: Test env var
 on:
   push:
     branches:
