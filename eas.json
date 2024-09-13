@@ -10,7 +10,7 @@
         "GRASS_COLOR": "green#"
       },
       "ios": {
-        "simulator": true,
+        "simulator": true
       }
     }
   }
