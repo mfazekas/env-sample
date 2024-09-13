@@ -19,11 +19,10 @@ jobs:
 
       - name: Use eas.json environment variables
         run: |
-          npx ts-node ./scripts/extract_eas_env_vars.ts simulator
+          npx ts-node ./scripts/extract_eas_env_vars.ts simulator >> $GITHUB_ENV
 
       - name: Show environment variable
         run: echo $MY_ENV_VAR
 
       - name: Show all environment variables
         run: env
-      

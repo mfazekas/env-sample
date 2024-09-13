@@ -21,10 +21,14 @@ jobs:
         run: npm install
       - name: Get project info
         run: npx expo config --json --type public
+      - name: Setup env vars
+        run: |
+          npx ts-node ./scripts/extract_eas_env_vars.ts simulator $GITHUB_ENV
+      - name: Show environment variable
+        run: |
+          export
       - name: Continuously Deploy
         uses: expo/expo-github-action/continuous-deploy-fingerprint@main
         with:
           profile: simulator
-        env:
-          EXPO_PUBLIC_SKY_COLOR: "**blue**"
-          SKY_COLOR: "**blue**"
+
