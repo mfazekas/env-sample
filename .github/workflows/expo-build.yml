@@ -28,4 +28,6 @@ jobs:
         uses: expo/expo-github-action/continuous-deploy-fingerprint@main
         with:
           profile: simulator
+        env:
+          ANOTHER_ENV: "something-something"
 
