@@ -18,7 +18,7 @@ jobs:
       - name: Set environment variable
         run: echo "MY_ENV_VAR=myValue" >> $GITHUB_ENV
 
-      - name: Use eas.json environment variables
+      - name: Use eas.json environment variables2
         run: |
           echo npx ts-node ./scripts/extract_eas_env_vars.ts simulator $GITHUB_ENV
           jq -r '.build.simulator.env | to_entries | map("\(.key)=\"\(.value)\"" ) | .[]' ./eas.json | tee -a $GITHUB_ENV
