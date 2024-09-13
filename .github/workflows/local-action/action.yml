@@ -4,6 +4,8 @@ runs:
   using: "composite"
   steps:
     - name: Hello world
+      shell: bash
       run: echo "Hello world from local-cation"
     - name: Show all environment variables
+      shell: bash
       run: env
