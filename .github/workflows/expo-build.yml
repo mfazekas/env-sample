@@ -4,7 +4,8 @@ on:
     branches:
       - main
 env:
-  EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+  _MY_EXPO_PROFILE: simulator
+
 
 jobs:
   expo-build:
@@ -23,11 +24,11 @@ jobs:
         run: npx expo config --json --type public
       - name: Setup env vars from eas.json
         run: |
-          jq -r '.build.simulator.env | to_entries | map("\(.key)=\"\(.value)\"" ) | .[]' ./eas.json | tee -a $GITHUB_ENV
+          jq -r '.build.${{ env._MY_EXPO_PROFILE }}.env | to_entries | map("\(.key)=\"\(.value)\"" ) | .[]' ./eas.json | tee -a $GITHUB_ENV
       - name: Continuously Deploy
         uses: expo/expo-github-action/continuous-deploy-fingerprint@main
         with:
-          profile: simulator
+          profile: ${{ env._MY_EXPO_PROFILE }}
         env:
           ANOTHER_ENV: "something-something"
 
