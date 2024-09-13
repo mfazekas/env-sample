@@ -16,6 +16,7 @@ if (process.argv.length < 4) {
 const profile = process.argv[2];
 const envfile = process.argv[3];
 const easJsonPath = path.join(process.cwd(), 'eas.json');
+console.log("easJsonPath", easJsonPath);
 const easJson = JSON.parse(fs.readFileSync(easJsonPath, 'utf8'));
 
 const env = easJson.build[profile].env;
@@ -25,4 +26,4 @@ for (const key in env) {
   fs.appendFileSync(envfile, `${key}=${env[key]}\n`);
 }
 
-console.log('Variables ${variables.join(', ')} extracted from eas.json for profile ${profile} into ${envfile}');
+console.log(`Variables ${variables.join(', ')} extracted from eas.json for profile ${profile} into ${envfile}`);
