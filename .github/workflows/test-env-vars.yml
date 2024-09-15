@@ -8,8 +8,9 @@ env:
   PROFILE_TO_BUILD: simulator
 
 jobs:
-  expo-build:
+  test-env-vars:
     runs-on: ubuntu-latest
+    environment: development
 
     steps:
       - name: 🏗 Setup repo
@@ -18,8 +19,20 @@ jobs:
         run: |
           echo "Hello world"
 
+      - name: Compare environemnt variables
+        run: |
+          jq -r '.build.${{ env.PROFILE_TO_BUILD }}.env | to_entries | map("\(.key)=\"\(.value)\"" ) | .[]' ./eas.json | tee -a /tmp/env_vars_from_expo.txt
+          echo "EXPO_PUBLIC_GRASS_COLOR=\"${{ vars.EXPO_PUBLIC_GRASS_COLOR}}\"" > /tmp/env_vars_from_github.txt
+          echo "GRASS_COLOR=\"${{ vars.GRASS_COLOR}}\""                         >> /tmp/env_vars_from_github.txt
+          if ! diff -du /tmp/env_vars_from_expo.txt /tmp/env_vars_from_github.txt; then
+            echo "Environment variables on expo and GitHub not match!"
+            exit 1
+          fi
+
+
       - name: Set environment variable
         run: echo "MY_ENV_VAR=myValue" >> $GITHUB_ENV
+
 
       - name: Use eas.json environment variables2
         run: |

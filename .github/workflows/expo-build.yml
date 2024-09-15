@@ -8,6 +8,7 @@ env:
 
 jobs:
   expo-build:
+    environment: development
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repo
@@ -21,6 +22,14 @@ jobs:
         run: npm install
       - name: Get project info
         run: npx expo config --json --type public
+      - name: Comapre env vars
+        run: |
+          jq -r '.expo | to_entries | map("\(.key)=\"\(.value)\"" ) | .[]' app.json > envs
+
+        env:
+          MY_ENV_VAR: ${{ vars.ANOTHER_ENV }}
+          EXPO_PUBLIC_GRASS_COLOR: ${{ env.EXPO_PUBLIC_GRASS_COLOR }}
+          ANOTHER_ENV: ${{ env.ANOTHER_ENV}}
       - name: Setup env vars
         run: |
           echo npx ts-node ./scripts/extract_eas_env_vars.ts simulator $GITHUB_ENV
